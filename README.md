@@ -1,5 +1,5 @@
 # util_for_WikiExtractor
-utility_for_WikiExtractor (for using wikipedia data on NLP)
+utility_for_WikiExtractor (for using wikipedia data on NLP)  
 To get new data from wikipedia, I made it because DL and processing are troublesome
 
 ### How to use (we2json.py)
