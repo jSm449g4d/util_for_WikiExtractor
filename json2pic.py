@@ -3,9 +3,9 @@ import os
 import random
 
 input_folder_json="./jp/wikijson"
-output_file_pic="./wikipic.txt"
+output_file_pic="./wikipic.tsv"
 
-SAMPLE_NUM=20
+SAMPLE_NUM=1
 SENTENCE_MIN=15
 
 def ffzk(input_dir):#Relative directory for all existing files
