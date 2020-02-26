@@ -5,8 +5,8 @@ import random
 input_folder_json="./wikijson"
 output_file_cola="./wikicola.txt"
 
-SAMPLE_NUM=50
-SENTENCE_MIN=10
+SAMPLE_NUM=10
+SENTENCE_MIN=15
 
 def ffzk(input_dir):#Relative directory for all existing files
     imgname_array=[];input_dir=input_dir.strip("\"\'")
@@ -24,7 +24,7 @@ if __name__ == '__main__':
             for title in json_load.keys():
                 for sentence in json_load[title].translate(str.maketrans("。",".","\n")).split("."):
                     if len(sentence)<SENTENCE_MIN:continue#←filter
-                    with open(output_file_cola, "a",encoding="utf-8") as fp:
-                        fp.write(title+"\t"+"1"+"\t_\t"+sentence.strip()+"\n")
+                    with open(output_file_cola, "a",encoding="utf-8") as fp2:
+                        fp2.write(title+"\t"+"1"+"\t_\t"+sentence.strip()+"\n")
     print("finish!")
     
