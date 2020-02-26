@@ -57,11 +57,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     dl_url="https://dumps.wikimedia.org/"+args.language+"wiki/latest/"\
     +args.language+"wiki-latest-pages-articles-multistream.xml.bz2"
-    
+    print("Downloading...")
     urllib.request.urlretrieve(dl_url,os.path.basename(dl_url))
     extract(os.path.basename(dl_url))
-    
-    if not os.path.exists(output_folder_json):os.mkdir(output_folder_json)
+    print("Success!")
+    os.makedirs(output_folder_json, exist_ok=True)
     
     imgname_array=ffzk("text")
     for imgname in imgname_array:
@@ -78,4 +78,5 @@ if __name__ == '__main__':
                 json.dump(libdata,fp, ensure_ascii=False);libdata.clear()
                 
     os.remove(os.path.basename(dl_url))
+    print("Finish!")
                     
