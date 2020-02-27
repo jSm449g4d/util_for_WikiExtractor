@@ -50,7 +50,7 @@ def storer(input):
     return output
 
 if __name__ == '__main__':
-    print("AA")
+    print("START!")
     parser = argparse.ArgumentParser(description='')
     parser.add_argument("-L",
                         '--language',
