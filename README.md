@@ -1,9 +1,8 @@
 # util_for_WikiExtractor
 utility_for_WikiExtractor (for using wikipedia data)  
-To get new data from wikipedia, I made it because DL and processing are troublesome
+To get new data from wikipedia, I made it because DL and processing are troublesome  
+※WikiExtractor→https://github.com/attardi/wikiextractor  
 
 ### How to use (we2json.py)
-1.plz DL WikiExtractor→https://github.com/attardi/wikiextractor  
-2.Throw "we2json.py" into the WikiExtractor folder  
-3.`$ pip install -U beautifulsoup4`  
-4.Japanese:`$ python3 we2json.py` or English:`$ python3 we2json.py -L en`  
+1.`$ pip install -U beautifulsoup4`  
+2.Japanese:`$ python3 we2json.py` or English:`$ python3 we2json.py -L en`  
