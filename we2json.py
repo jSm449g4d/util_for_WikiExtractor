@@ -12,6 +12,7 @@ import os
 import argparse
 import io
 import urllib.request
+import zipfile
 
 output_folder_json="./wikijson"
 libdata={}
@@ -19,8 +20,8 @@ libdata={}
 
 def extract(input_file):
     subprocess.call(['python3', 
-                    'WikiExtractor.py', 
-                    input_file])
+                    'wikiextractor-master/WikiExtractor.py', 
+                    input_file,])
 
 def ffzk(input_dir):#Relative directory for all existing files
     imgname_array=[];input_dir=input_dir.strip("\"\'")
@@ -55,6 +56,13 @@ if __name__ == '__main__':
                         default="ja",
                         help='en:english,ja:japanese')
     args = parser.parse_args()
+    
+    #download WikiExtractor
+    urllib.request.urlretrieve("https://github.com/attardi/wikiextractor/archive/master.zip","master.zip")
+    with zipfile.ZipFile("master.zip") as zf:zf.extractall()
+    os.remove("master.zip")
+    
+    #download Wikipedia_dump
     dl_url="https://dumps.wikimedia.org/"+args.language+"wiki/latest/"\
     +args.language+"wiki-latest-pages-articles-multistream.xml.bz2"
     print("Downloading...")
