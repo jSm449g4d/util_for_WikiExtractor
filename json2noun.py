@@ -10,7 +10,7 @@ import sys
 import argparse
 
 input_folder_json="./wikijson"
-output_folder_json="./wikinoun"
+output_folder_noun="./wikinoun"
 SENTENCE_MIN=15
 
 #plz check this article because this program require these data.
@@ -53,9 +53,9 @@ if __name__ == '__main__':
 #MeCab+Neologd on Windows    
     chasen = MeCab.Tagger('-Ochasen -d $(rcpath)\..\dic\mecab-ipadic-neologd')
     
-    imgname_array=random.sample(ffzk(input_folder_json),1)
-#    imgname_array=ffzk(input_folder_json)
-    os.makedirs(output_folder_json, exist_ok=True)
+#    imgname_array=random.sample(ffzk(input_folder_json),1)
+    imgname_array=ffzk(input_folder_json)
+    os.makedirs(output_folder_noun, exist_ok=True)
     for imgname in imgname_array:
         print(imgname)
         with open(imgname, "r",encoding="utf-8") as fp:
