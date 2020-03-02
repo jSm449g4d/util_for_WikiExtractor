@@ -7,9 +7,10 @@ import urllib.request
 import zipfile
 import subprocess
 import sys
+import argparse
 
 input_folder_json="./wikijson"
-output_folder_noun="./wikinoun"
+output_folder_json="./wikinoun"
 SENTENCE_MIN=15
 
 #plz check this article because this program require these data.
@@ -24,7 +25,7 @@ def ffzk(input_dir):#Relative directory for all existing files
     return imgname_array
 
 
-def text2noun(MeCab_Tagger,text="",separator=' ',indention='\n',wakachi_mode=0):
+def text2noun(MeCab_Tagger,text="",separator=' ',indention='\n',feature=""):
     sep=text.replace("。","\n").split('\n');
     sep=text.translate(str.maketrans("。",".","\n")).split(".")
     ret=""
@@ -33,20 +34,27 @@ def text2noun(MeCab_Tagger,text="",separator=' ',indention='\n',wakachi_mode=0):
         nounline=""
         node=MeCab_Tagger.parseToNode(line)
         while node:
-            if node.feature.split(",")[0] == "名詞":
+            if feature=="" or node.feature.split(",")[0] == feature:
                 nounline+=node.surface+separator
-            elif wakachi_mode:nounline+=node.surface+separator
             node = node.next
         ret+=nounline.strip(separator)+indention
     return ret
 
 if __name__ == '__main__':
     
-#MeCab+Neologd on Windows
+    print("START!")
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument("-F",
+                        '--feature',
+                        default="名詞",
+                        help='feature')
+    args = parser.parse_args()
+    
+#MeCab+Neologd on Windows    
     chasen = MeCab.Tagger('-Ochasen -d $(rcpath)\..\dic\mecab-ipadic-neologd')
-       
-#    imgname_array=random.sample(ffzk(input_folder_json),1)
-    imgname_array=ffzk(input_folder_json)
+    
+    imgname_array=random.sample(ffzk(input_folder_json),1)
+#    imgname_array=ffzk(input_folder_json)
     os.makedirs(output_folder_json, exist_ok=True)
     for imgname in imgname_array:
         print(imgname)
@@ -54,8 +62,8 @@ if __name__ == '__main__':
             json_load = json.load(fp)
             for title in json_load.keys():
                 try:
-                     with open(os.path.join(output_folder_noun,os.path.basename(imgname)+".csv"), "a",encoding="utf-8") as fp2:
-                         fp2.write(text2noun(chasen,json_load[title]))
+                     with open(os.path.join(output_folder_json,os.path.basename(imgname)+".csv"), "a",encoding="utf-8") as fp2:
+                         fp2.write(text2noun(chasen,json_load[title],feature=args.feature))
                 except:
                     print("Error:"+imgname)
     print("finish!")
