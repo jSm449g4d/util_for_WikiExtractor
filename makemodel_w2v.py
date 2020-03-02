@@ -11,8 +11,8 @@ print("start")
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 corpus =word2vec.LineSentence('wikinoun.txt')
-model = word2vec.Word2Vec(corpus,sg=1,alpha=0.025, size=200, window=5,min_count=5,
-                          workers=multiprocessing.cpu_count()-1,iter=5,negative=3,)
+model = word2vec.Word2Vec(corpus,sg=1,alpha=0.05, size=200, window=5,min_count=5,
+                          workers=multiprocessing.cpu_count()-1,iter=10,negative=3,)
 model.save("wikinoun.model")
 
 print("Finish!"+starttime+"→"+str(datetime.now()))
