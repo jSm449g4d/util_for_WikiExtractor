@@ -10,6 +10,6 @@ To get new data from wikipedia, I made it because DL and processing are troubles
 1.Japanese:`$ python3 we2json.py` or English:`$ python3 we2json.py -L en`  
 ### json2noun.py
 **you can get noun dataset**  
-0.plz install MeCab+neologd on Windows → https://huxiin.ga/wordpress/?p=983
+0.plz install MeCab+neologd on Windows → https://huxiin.ga/wordpress/?p=983  
 1.plz get wikipedia_dataset(japanese) expressed in json by `$ python3 we2json.py`  
 2.Japanese:`$ python3 json2noun.py`  
