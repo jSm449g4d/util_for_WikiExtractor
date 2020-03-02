@@ -2,7 +2,7 @@ import json
 import os
 import random
 
-input_folder_json="./jp/wikijson"
+input_folder_json="./wikijson"
 output_file_pic="./wikipic.tsv"
 
 SAMPLE_NUM=1
