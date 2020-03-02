@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 input_folder_json="./wikijson"
-output_folder_json="./wikinoun"
+output_folder_noun="./wikinoun"
 SENTENCE_MIN=15
 
 #plz check this article because this program require these data.
@@ -54,7 +54,7 @@ if __name__ == '__main__':
             json_load = json.load(fp)
             for title in json_load.keys():
                 try:
-                     with open(os.path.join(output_folder_json,os.path.basename(imgname)+".csv"), "a",encoding="utf-8") as fp2:
+                     with open(os.path.join(output_folder_noun,os.path.basename(imgname)+".csv"), "a",encoding="utf-8") as fp2:
                          fp2.write(text2noun(chasen,json_load[title]))
                 except:
                     print("Error:"+imgname)
