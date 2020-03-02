@@ -12,4 +12,5 @@ To get new data from wikipedia, I made it because DL and processing are troubles
 **you can get japanese noun dataset used by Word2Vec etc...**  
 0.plz install MeCab+neologd on Windows → https://huxiin.ga/wordpress/?p=983  
 1.plz get wikipedia_dataset(japanese) expressed by json → `$ python3 we2json.py -L ja`  
-2.noun:`$ python3 json2noun.py` verb:`$ python3 json2noun.py -F 動詞`
+2.noun:`$ python3 json2noun.py` verb:`$ python3 json2noun.py -F 動詞`  
+x.if you need dataset as one_file → `$ cat ./wikinoun/*.txt > wikinown.txt`  
